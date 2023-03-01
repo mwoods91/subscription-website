@@ -6,7 +6,7 @@ import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { Box, Grid, InputAdornment, Typography, Button } from '@mui/material/';
 import { UserContext } from '../../../../contexts/UserContext';
-
+import DatePicker from 'react-mobile-datepicker';
 //3rd party
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 
@@ -16,20 +16,6 @@ import MuiTextField from '../../../../components/TextField';
 const Form = () => {
   const [state, setState] = useContext(UserContext);
 
-  const [capsWarning, setCapsWarning] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const onKeyDown = (keyEvent) => {
-    if (keyEvent.getModifierState('CapsLock')) {
-      setCapsWarning(true);
-    } else {
-      setCapsWarning(false);
-    }
-  };
   const navigate = useNavigate();
   const formik = useFormik({
     validateOnBlur: false,
@@ -57,9 +43,6 @@ const Form = () => {
       if (values.email.trim() === '') {
         errors.email = 'Email address required';
       }
-      // if (values.password.trim() === '') {
-      //   errors.password = 'Password required for account set up';
-      // }
 
       return errors;
     },
@@ -67,13 +50,11 @@ const Form = () => {
       try {
         await axios.post('http://localhost:5000/register', {
           client_reference_id: values.client_reference_id,
-          fullname: values.fullname,
           dob: values.dob,
+          fullname: values.fullname,
           email: values.email,
           phone: values.phone
-          // password: values.password
         });
-        console.log(values);
         if (values.error) {
           toast.error(values.error);
         } else {
@@ -129,6 +110,7 @@ const Form = () => {
               helperText={formik.errors.dob}
             />
           </Grid>
+
           <Grid item xs={12}>
             <MuiTextField
               label="Full name"

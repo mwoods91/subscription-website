@@ -14,8 +14,8 @@ const SubscriptionDetails = ({ children }) => {
       setSubscriptions(data.data);
     };
 
-    if (state && state.token) getSubscriptions();
-  }, [state && state.token]);
+    if (state && state.confirmtoken) getSubscriptions();
+  }, [state && state.confirmtoken]);
 
   const manageSubscription = async () => {
     const { data } = await axios.get('/customer-portal');
@@ -42,19 +42,19 @@ const SubscriptionDetails = ({ children }) => {
                       <Typography variant="h6">Subscription </Typography>
                     </Grid>
                     <Grid sx={{ mt: 2 }} item xs={6}>
-                      <Typography variant="body2">{sub.id}</Typography>
+                      <Typography variant="body1">{sub.id}</Typography>
                     </Grid>
                     <Grid sx={{ mt: 2 }} item xs={6}>
                       <Typography variant="h6">Status</Typography>
                     </Grid>
                     <Grid sx={{ mt: 2 }} item xs={6}>
-                      <Typography variant="body2">{sub.status.charAt(0).toUpperCase() + sub.status.slice(1)}</Typography>
+                      <Typography variant="body1">{sub.status.charAt(0).toUpperCase() + sub.status.slice(1)}</Typography>
                     </Grid>
                     <Grid sx={{ mt: 2 }} item xs={6}>
                       <Typography variant="h6">Payment Start</Typography>
                     </Grid>
                     <Grid sx={{ mt: 2 }} item xs={6}>
-                      <Typography variant="body2">
+                      <Typography variant="body1">
                         {
                           (sub.current_period_start = new Date(sub.current_period_start * 1000).toLocaleDateString('en-IE', {
                             year: 'numeric',
@@ -68,7 +68,7 @@ const SubscriptionDetails = ({ children }) => {
                       <Typography variant="h6">Next Payment </Typography>
                     </Grid>
                     <Grid sx={{ mt: 2 }} item xs={6}>
-                      <Typography variant="body2">
+                      <Typography variant="body1">
                         {
                           (sub.current_period_end = new Date(sub.current_period_end * 1000).toLocaleDateString('en-IE', {
                             year: 'numeric',
@@ -97,25 +97,25 @@ const SubscriptionDetails = ({ children }) => {
                         <Typography variant="h6">Name</Typography>
                       </Grid>
                       <Grid sx={{ mt: 2 }} item xs={6}>
-                        <Typography variant="body2">HRI {sub.plan.nickname} Membership</Typography>
+                        <Typography variant="body1">HRI {sub.plan.nickname} Membership</Typography>
                       </Grid>
                       <Grid sx={{ mt: 2 }} item xs={6}>
                         <Typography variant="h6">Billing</Typography>
                       </Grid>
                       <Grid sx={{ mt: 2 }} item xs={6}>
-                        <Typography variant="body2">{sub.object.charAt(0).toUpperCase() + sub.object.slice(1)}</Typography>
+                        <Typography variant="body1">{sub.object.charAt(0).toUpperCase() + sub.object.slice(1)}</Typography>
                       </Grid>
                       <Grid sx={{ mt: 2 }} item xs={6}>
                         <Typography variant="h6">Price</Typography>
                       </Grid>
                       <Grid sx={{ mt: 2 }} item xs={6}>
-                        <Typography variant="body2">€{sub.plan.amount / 100}</Typography>
+                        <Typography variant="body1">€{sub.plan.amount / 100}</Typography>
                       </Grid>
                       <Grid sx={{ mt: 2 }} item xs={6}>
                         <Typography variant="h6">Last 4 digits on card</Typography>
                       </Grid>
                       <Grid sx={{ mt: 2 }} item xs={6}>
-                        <Typography variant="body2">{sub.default_payment_method.card.last4}</Typography>
+                        <Typography variant="body1">{sub.default_payment_method.card.last4}</Typography>
                       </Grid>
                     </Grid>
                   ))}

@@ -13,35 +13,21 @@ exports.register = async (req, res) => {
   try {
     // validation
     const { client_reference_id, fullname, dob, email, phone } = req.body;
+    console.log(req.body);
     if (!email) {
       return res.json({
-        error: "Name is required",
+        error: "Email is required",
       });
     }
-    // if (!password || password.length < 6) {
-    //   return res.json({
-    //     error: "Password is required and should be 6 characters long",
-    //   });
-    // }
+
     const exist = await User.findOne({ email });
-    if (exist) {
-      return res.json({
-        error: "Email is taken",
-      });
-    }
-    // hash password
-    // const hashedPassword = await hashPassword(password);
+    if (exist) return sendError(res, "Email is taken");
 
     // create account in stripe
     const customer = await stripe.customers.create({
-      metadata: {
-        client_reference_id,
-      },
-      email: email,
-      name: fullname,
+      email,
     });
-
-    console.log("stripe customer created on signup", customer);
+    // console.log("stripe customer created on signup", customer);
 
     try {
       const user = await new User({
@@ -53,21 +39,14 @@ exports.register = async (req, res) => {
         stripe_customer_id: customer.id,
       }).save();
 
-      const record = await new Record({
-        patient_record: user._id,
-      }).save();
-
       // create signed token
-      const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
-        expiresIn: "7d",
+      const confirmtoken = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
+        expiresIn: "1d",
       });
-
       //   console.log(user);
-      const { ...rest } = user._doc;
-      console.log(...rest);
+      const { password, ...rest } = user._doc;
       return res.json({
-        token,
-        record: rest,
+        confirmtoken,
         user: rest,
       });
     } catch (err) {
@@ -77,6 +56,69 @@ exports.register = async (req, res) => {
     console.log(err);
   }
 };
+//   try {
+//     // validation
+//     const { client_reference_id, fullname, dob, email, phone } = req.body;
+//     if (!email) {
+//       return res.json({
+//         error: "Name is required",
+//       });
+//     }
+//     const exist = await User.findOne({ email });
+//     if (exist) {
+//       return res.json({
+//         error: "Email is taken",
+//       });
+//     }
+
+//     console.log(email);
+
+//     // create account in stripe
+//     const customer = await stripe.customers.create({
+//       metadata: {
+//         client_reference_id,
+//       },
+//       email: email,
+//       name: fullname,
+//     });
+
+//     // console.log("stripe customer created on signup", customer);
+
+//     try {
+//       const user = await new User({
+//         client_reference_id,
+//         fullname,
+//         dob,
+//         email,
+//         phone,
+//         stripe_customer_id: customer.id,
+//       }).save();
+
+//       const record = await new Record({
+//         patient_record: user._id,
+//       }).save();
+
+//       // create signed token
+//       const confirmtoken = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
+//         expiresIn: "7d",
+//       });
+
+//       //   console.log(user);
+//       const { ...rest } = user._doc;
+//       console.log(...rest);
+//       return res.json({
+//         // confirmtoken,
+//         confirmtoken,
+//         record: rest,
+//         user: rest,
+//       });
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
 
 // exports.login = async (req, res) => {
 //   const user = await User.findOne({ email: req.body.email });

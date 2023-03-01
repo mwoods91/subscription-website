@@ -7,7 +7,7 @@ const UserContext = createContext();
 const UserProvider = ({ children }) => {
   const [state, setState] = useState({
     user: {},
-    token: ''
+    confirmtoken: ''
   });
 
   useEffect(() => {
@@ -15,9 +15,9 @@ const UserProvider = ({ children }) => {
   }, []);
 
   // axios config
-  const token = state && state.token ? state.token : '';
+  const confirmtoken = state && state.confirmtoken ? state.confirmtoken : '';
   axios.defaults.baseURL = process.env.REACT_APP_API;
-  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  axios.defaults.headers.common['Authorization'] = `Bearer ${confirmtoken}`;
 
   return <UserContext.Provider value={[state, setState]}>{children}</UserContext.Provider>;
 };

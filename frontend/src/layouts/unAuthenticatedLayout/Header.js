@@ -278,6 +278,7 @@ const Header = ({ handleDrawerOpen, layout = 'landing', ...others }) => {
                     onClick={drawerToggler(false)}
                     onKeyDown={drawerToggler(false)}
                   >
+                    <></>
                     <List>
                       <Link style={{ textDecoration: 'none' }} href="tel:0416871457">
                         <ListItemButton component="span">
@@ -298,7 +299,7 @@ const Header = ({ handleDrawerOpen, layout = 'landing', ...others }) => {
                         <ListItemButton component="span">
                           <ListItemIcon></ListItemIcon>
                           <ListItemText
-                            primary="Home"
+                            primary="Register"
                             primaryTypographyProps={{
                               variant: 'h6',
                               color: search.pathname === '/' ? 'primary' : 'text.primary'
@@ -306,8 +307,21 @@ const Header = ({ handleDrawerOpen, layout = 'landing', ...others }) => {
                           />
                         </ListItemButton>
                       </Link>
-                      <Divider />
-                      <Link style={{ textDecoration: 'none' }} href="/about-us">
+                      <Link style={{ textDecoration: 'none' }} href="/login">
+                        <ListItemButton component="span">
+                          <ListItemIcon></ListItemIcon>
+                          <ListItemText
+                            primary="Login"
+                            primaryTypographyProps={{
+                              variant: 'h6',
+                              color: search.pathname === '/login' ? 'primary' : 'text.primary'
+                            }}
+                          />
+                        </ListItemButton>
+                      </Link>
+
+                      {/* <Divider /> */}
+                      {/* <Link style={{ textDecoration: 'none' }} href="/about-us">
                         <ListItemButton component="span">
                           <ListItemIcon></ListItemIcon>
                           <ListItemText
@@ -319,8 +333,8 @@ const Header = ({ handleDrawerOpen, layout = 'landing', ...others }) => {
                           />
                         </ListItemButton>
                       </Link>
-                      <Divider />
-                      <Link style={{ textDecoration: 'none' }} href="/id-card">
+                      <Divider /> */}
+                      {/* <Link style={{ textDecoration: 'none' }} href="/id-card">
                         <ListItemButton component="span">
                           <ListItemIcon></ListItemIcon>
                           <ListItemText
@@ -332,8 +346,8 @@ const Header = ({ handleDrawerOpen, layout = 'landing', ...others }) => {
                           />
                         </ListItemButton>
                       </Link>
-                      <Divider />
-                      <Link style={{ textDecoration: 'none' }} href="/plus-package">
+                      <Divider /> */}
+                      {/* <Link style={{ textDecoration: 'none' }} href="/plus-package">
                         <ListItemButton component="span">
                           <ListItemIcon></ListItemIcon>
                           <ListItemText
@@ -344,10 +358,10 @@ const Header = ({ handleDrawerOpen, layout = 'landing', ...others }) => {
                             }}
                           />
                         </ListItemButton>
-                      </Link>
+                      </Link> */}
                     </List>
-                    <Divider />
-                    <Link style={{ textDecoration: 'none' }} href="/hri-app">
+                    {/* <Divider /> */}
+                    {/* <Link style={{ textDecoration: 'none' }} href="/hri-app">
                       <ListItemButton component="span">
                         <ListItemIcon></ListItemIcon>
                         <ListItemText
@@ -359,8 +373,8 @@ const Header = ({ handleDrawerOpen, layout = 'landing', ...others }) => {
                         />
                       </ListItemButton>
                     </Link>
-                    <Divider />
-                    <Link style={{ textDecoration: 'none' }} href="/help-center">
+                    <Divider /> */}
+                    {/* <Link style={{ textDecoration: 'none' }} href="/help-center">
                       <ListItemButton component="span">
                         <ListItemIcon></ListItemIcon>
                         <ListItemText
@@ -371,7 +385,7 @@ const Header = ({ handleDrawerOpen, layout = 'landing', ...others }) => {
                           }}
                         />
                       </ListItemButton>
-                    </Link>
+                    </Link> */}
                   </Box>
                 </Drawer>
               </Box>

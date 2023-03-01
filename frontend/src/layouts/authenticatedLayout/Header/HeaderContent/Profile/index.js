@@ -27,8 +27,6 @@ import IconButton from '../../../../../components/IconButton';
 
 import { useNavigate } from 'react-router-dom';
 
-// assets
-import MaterPrivate from '../../../../../assets/images/Users/MaterPrivate.png';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 // tab panel wrapper
@@ -50,8 +48,6 @@ TabPanel.propTypes = {
 
 const Profile = () => {
   const [state, setState] = useContext(UserContext);
-
-  console.log('The logged in user is', state.user.fullname);
 
   let navigate = useNavigate();
   const theme = useTheme();
@@ -79,7 +75,7 @@ const Profile = () => {
   };
 
   const handleLogout = () => {
-    setState({ user: {}, token: '' });
+    setState({ user: {}, confirmtoken: '' });
     localStorage.removeItem('auth');
     navigate('/login');
   };

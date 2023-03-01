@@ -23,7 +23,7 @@ const Pricing = () => {
   };
 
   const handleClick = async (price) => {
-    if (state && state.token) {
+    if (state && state.confirmtoken) {
       const { data } = await axios.post('/create-subscription', {
         priceId: price.id
       });

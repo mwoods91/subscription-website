@@ -15,7 +15,7 @@ const IDCard = () => {
       console.log(data);
     };
 
-    if (state && state.token) getSubscriptions();
+    if (state && state.confirmtoken) getSubscriptions();
   }, [state && state.token]);
 
   return <>{subscriptions.length === 0 ? <Pricing /> : <PlusCard />}</>;
