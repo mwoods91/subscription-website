@@ -35,7 +35,7 @@ const Page = ({ children }) => {
   const theme = useTheme();
   return (
     <Box>
-      <Container paddingTop={'0 !important'} marginTop={-8}>
+      <Container>
         <Grid container spacing={4}>
           <Grid item xs={12} md={3}>
             <Card sx={{ boxShadow: 3 }}>
