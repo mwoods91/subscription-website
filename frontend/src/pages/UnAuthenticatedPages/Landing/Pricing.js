@@ -18,7 +18,7 @@ const Pricing = () => {
   }, []);
 
   const fetchPrices = async () => {
-    const { data } = await axios.get('http://localhost:5000/prices');
+    const { data } = await axios.get('https://plus-website-api.zitoq92eowq.eu-gb.codeengine.appdomain.cloud/prices');
     console.log('prices get request', data);
     setPrices(data);
   };

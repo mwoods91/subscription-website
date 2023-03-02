@@ -40,37 +40,6 @@ const StepEmailLogin = (props) => {
             <MuiTextField label="Email" id="email" type="email" name="email" value={value.email} onChange={handleChange('email')} />
           </Stack>
         </Grid>
-        {/* <Grid item xs={12}>
-        <Stack spacing={1}>
-          <MuiTextField
-            name="password"
-            label="Password"
-            color={capsWarning ? 'warning' : 'primary'}
-            id="-password-login"
-            type={showPassword ? 'text' : 'password'}
-            onChange={formik.handleChange}
-            value={formik.values.password}
-            onBlur={(event) => {
-              setCapsWarning(false);
-            }}
-            error={Boolean(formik.errors.password)}
-            helperText={formik.errors.password}
-            onKeyDown={onKeyDown}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment sx={{ cursor: 'pointer' }} onClick={handleClickShowPassword} position="end">
-                  {showPassword ? <EyeOutlined /> : <EyeInvisibleOutlined />}
-                </InputAdornment>
-              )
-            }}
-          />
-          {capsWarning && !formik.errors.password && (
-            <Typography variant="caption" sx={{ color: 'warning.main' }} id="warning-helper-text-password-login">
-              Caps lock on!
-            </Typography>
-          )}
-        </Stack>
-      </Grid> */}
         <Grid item xs={12}>
           {/* <Typography sx={{ textAlign: 'right', mt: 0, mb: 1 }} variant={'subtitle2'}>
           <Link component={'a'} color={'primary'} href={'/password-reset'} underline={'none'}>

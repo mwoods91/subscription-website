@@ -104,7 +104,7 @@ const MainDrawer = ({ open, handleDrawerToggle, window }) => {
                 </ListItemButton>
               </Link>
               <Divider />
-              <Link style={{ textDecoration: 'none' }} href="/my-orders">
+              {/* <Link style={{ textDecoration: 'none' }} href="/my-orders">
                 <ListItemButton component="span">
                   <ListItemIcon></ListItemIcon>
                   <ListItemText
@@ -116,7 +116,7 @@ const MainDrawer = ({ open, handleDrawerToggle, window }) => {
                   />
                 </ListItemButton>
               </Link>
-              <Divider />
+              <Divider /> */}
               <Link style={{ textDecoration: 'none' }} href="/my-account/personal">
                 <ListItemButton component="span">
                   <ListItemIcon></ListItemIcon>

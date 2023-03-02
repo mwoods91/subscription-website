@@ -33,7 +33,7 @@ const PlusCard = () => {
           <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
             <Card sx={{ borderRadius: 2 }} onClick={handleFlipChange}>
               <CardMedia component="img" alt="Front of ID Card" width={1} image={IDFront} />
-              <Box sx={{ position: 'absolute', mt: -10, ml: 3.4 }}>
+              <Box sx={{ position: 'absolute', mt: { xs: -7, md: -10 }, ml: { xs: 2, md: 3.4 } }}>
                 <Typography variant="h5">{state.user.fullname}</Typography>
               </Box>
             </Card>

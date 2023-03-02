@@ -48,7 +48,7 @@ const Form = () => {
     },
     onSubmit: async (values) => {
       try {
-        await axios.post('http://localhost:5000/register', {
+        await axios.post('/register', {
           client_reference_id: values.client_reference_id,
           dob: values.dob,
           fullname: values.fullname,

@@ -27,10 +27,10 @@ const AuthorizedRoutes = {
         </AuthRoute>
       ),
       children: [
-        {
-          path: '/my-orders',
-          element: <Orders />
-        },
+        // {
+        //   path: '/my-orders',
+        //   element: <Orders />
+        // },
         {
           path: '/my-id-card',
           element: <IDCard />

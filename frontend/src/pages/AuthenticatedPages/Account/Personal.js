@@ -57,13 +57,10 @@ const Personal = () => {
           <Typography variant="h6">Other medical information (if applicable)</Typography>
         </Grid>
         <Grid sx={{ mt: 1 }} item xs={12} md={12}>
-          <MuiTextField label="Medical Conditions" id="code" type="text" name="code" value={''} />
+          <MuiTextField label="Diagnosis" id="diagnosis" type="text" name="diagnosis" value={''} />
         </Grid>
         <Grid sx={{ mt: 1 }} item xs={12} md={12}>
-          <MuiTextField label="Allergies and reactions" id="code" type="text" name="code" value={''} />
-        </Grid>
-        <Grid sx={{ mt: 1 }} item xs={12} md={12}>
-          <MuiTextField label="medication" id="code" type="text" name="code" value={''} />
+          <MuiTextField label="Indication" id="indication" type="text" name="indication" value={''} />
         </Grid>
       </Grid>
       <Grid sx={{ mt: 1 }} container spacing={1}>

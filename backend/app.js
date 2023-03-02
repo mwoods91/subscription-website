@@ -10,15 +10,13 @@ require("dotenv").config();
 const app = express();
 
 // middlewares
-app.use(express.json({ limit: "5mb" }));
-app.use(
-  cors({
-    origin: [process.env.CLIENT_URL],
-  })
-);
+app.use(express.json());
+
+//enable cors for all routes
+app.use(cors());
 
 // autoload routes
-readdirSync("./routes").map((r) => app.use(require(`./routes/${r}`)));
+readdirSync("./routes", cors()).map((r) => app.use(require(`./routes/${r}`)));
 
 // listen
 const port = process.env.PORT || 8000;
