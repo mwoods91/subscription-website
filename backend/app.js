@@ -12,11 +12,17 @@ const app = express();
 // middlewares
 app.use(express.json());
 
-//enable cors for all routes
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["*"],
+    credentials: false,
+  })
+);
 
 // autoload routes
-readdirSync("./routes", cors()).map((r) => app.use(require(`./routes/${r}`)));
+readdirSync("./routes", {}).map((r) => app.use(require(`./routes/${r}`)));
 
 // listen
 const port = process.env.PORT || 8000;

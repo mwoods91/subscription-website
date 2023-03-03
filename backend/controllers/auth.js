@@ -145,3 +145,9 @@ exports.verifyEmail = async (req, res) => {
     user: rest,
   });
 };
+
+exports.test = async (req, res) => {
+  const { client_reference_id } = req.body;
+  console.log(client_reference_id);
+  res.json({ message: "Data received" });
+};

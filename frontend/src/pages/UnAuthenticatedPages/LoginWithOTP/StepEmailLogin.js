@@ -15,6 +15,7 @@ const StepEmailLogin = (props) => {
   const Continue = async (e) => {
     const { data } = await axios.post('/send-otp', {
       email: `${value.email}`
+
       // password: values.password
     });
     console.log(data);
@@ -41,11 +42,6 @@ const StepEmailLogin = (props) => {
           </Stack>
         </Grid>
         <Grid item xs={12}>
-          {/* <Typography sx={{ textAlign: 'right', mt: 0, mb: 1 }} variant={'subtitle2'}>
-          <Link component={'a'} color={'primary'} href={'/password-reset'} underline={'none'}>
-            Forgot your password?
-          </Link>
-        </Typography> */}
           <MuiButton type="button" text="Login to HRI+ Portal" onClick={Continue} />
           <Box marginBottom={{ xs: 1, sm: 0 }}>
             <Typography sx={{ textAlign: 'center', mt: 1, mb: 1 }} variant={'subtitle2'}>

@@ -18,6 +18,7 @@ const UserProvider = ({ children }) => {
   const confirmtoken = state && state.confirmtoken ? state.confirmtoken : '';
   axios.defaults.baseURL = process.env.REACT_APP_API;
   axios.defaults.headers.common['Authorization'] = `Bearer ${confirmtoken}`;
+  // axios.defaults.headers.post['Authorization'] = `Bearer ${confirmtoken}`;
 
   return <UserContext.Provider value={[state, setState]}>{children}</UserContext.Provider>;
 };

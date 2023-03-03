@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgpace_main_v4=self.webpackChunkgpace_main_v4||[]).push([[622],{68622:function(e,n,c){c.r(n);var a=c(61889),i=c(20890),r=(c(72791),c(10481)),l=c(80184);n.default=function(){return(0,l.jsx)(a.ZP,{container:!0,children:(0,l.jsx)(a.ZP,{item:!0,xs:12,children:(0,l.jsx)(r.Z,{children:(0,l.jsx)(i.Z,{variant:"h6",children:"It looks like you cancelled your payment"})})})})}}}]);
+//# sourceMappingURL=622.3209382e.chunk.js.map
