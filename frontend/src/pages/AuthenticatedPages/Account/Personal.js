@@ -89,7 +89,7 @@ const Personal = () => {
         </Grid>
 
         <Grid sx={{ mt: 1 }} container spacing={1}>
-          {/* <Grid sx={{ mt: 1 }} item xs={12} md={2}>
+          <Grid sx={{ mt: 1 }} item xs={12} md={2}>
             <TextField
               select
               sx={{ '& .MuiInputBase-root': { height: 29, Width: 100 } }}
@@ -97,16 +97,16 @@ const Personal = () => {
               InputLabelProps={{ shrink: true }}
               variant="outlined"
               name="prefix"
-              value={data.prefix}
+              value={formik.values.prefix}
               label="Prefix"
               onChange={formik.handleChange}
             >
-              {options.map((option, index) => (
+              {Prefix.map((option, index) => (
                 <MenuItem key={option}>{option}</MenuItem>
               ))}
             </TextField>
-          </Grid> */}
-          {/* <Grid sx={{ mt: 1 }} item xs={12} md={10}>
+          </Grid>
+          <Grid sx={{ mt: 1 }} item xs={12} md={10}>
             <MuiTextField
               label="Full name"
               id="fullname"
@@ -117,10 +117,10 @@ const Personal = () => {
               error={Boolean(formik.errors.fullname)}
               helperText={formik.errors.fullname}
             />
-          </Grid> */}
+          </Grid>
         </Grid>
         <Grid sx={{ mt: 1 }} container spacing={1}>
-          {/* <Grid sx={{ mt: 1 }} item xs={12} md={6}>
+          <Grid sx={{ mt: 1 }} item xs={12} md={6}>
             <MuiTextField
               label="Address Line 1"
               id="address1"
@@ -131,18 +131,18 @@ const Personal = () => {
               error={Boolean(formik.errors.address1)}
               helperText={formik.errors.address1}
             />
-          </Grid> */}
+          </Grid>
           <Grid sx={{ mt: 1 }} item xs={12} md={6}>
-            {/* <MuiTextField
+            <MuiTextField
               label="Address Line 2"
               id="address2"
               type="text"
               name="address2"
               value={formik.values.address2}
               onChange={formik.handleChange}
-            /> */}
+            />
           </Grid>
-          {/* <Grid sx={{ mt: 1 }} item xs={12} md={6}>
+          <Grid sx={{ mt: 1 }} item xs={12} md={6}>
             <TextField
               select
               sx={{ '& .MuiInputBase-root': { height: 29, Width: 100 } }}
@@ -162,9 +162,9 @@ const Personal = () => {
                 </MenuItem>
               ))}
             </TextField>
-          </Grid> */}
+          </Grid>
           <Grid sx={{ mt: 1 }} item xs={12} md={6}>
-            {/* <MuiTextField
+            <MuiTextField
               label="Eircode"
               id="eircode"
               type="text"
@@ -173,7 +173,7 @@ const Personal = () => {
               onChange={formik.handleChange}
               error={Boolean(formik.errors.eircode)}
               helperText={formik.errors.eircode}
-            /> */}
+            />
           </Grid>
           {/* <Grid sx={{ mt: 1 }} item xs={12} md={6}>
             <TextField
@@ -222,7 +222,7 @@ const Personal = () => {
             /> */}
           </Grid>
           <Grid sx={{ mt: 1 }} item xs={12} md={6}>
-            {/* <MuiTextField
+            <MuiTextField
               label="Mobile"
               id="phone"
               type="text"
@@ -231,12 +231,12 @@ const Personal = () => {
               onChange={formik.handleChange}
               error={Boolean(formik.errors.phone)}
               helperText={formik.errors.phone}
-            /> */}
+            />
           </Grid>
         </Grid>
         <Divider sx={{ mt: 2, border: 0.5, color: '#437CAF' }} />
         <Grid sx={{ mt: 1 }} container spacing={1}>
-          {/* <Grid item xs={12} md={12}>
+          <Grid item xs={12} md={12}>
             <Typography variant="h6">Other medical information (if applicable)</Typography>
           </Grid>
           <Grid sx={{ mt: 1 }} item xs={12} md={12}>
@@ -244,7 +244,7 @@ const Personal = () => {
           </Grid>
           <Grid sx={{ mt: 1 }} item xs={12} md={12}>
             <MuiTextField readonly label="Indication" id="indication" type="text" name="indication" value={formik.values.indication} />
-          </Grid> */}
+          </Grid>
         </Grid>
         <Grid sx={{ mt: 1 }} container spacing={1}>
           <Grid item xs={12} md={4}></Grid>
