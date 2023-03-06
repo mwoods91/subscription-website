@@ -10,7 +10,6 @@ const userSchema = new Schema({
   prefix: {
     type: String,
     trim: true,
-    required: true,
   },
   fullname: {
     type: String,
@@ -46,7 +45,7 @@ const userSchema = new Schema({
     trim: true,
   },
   dob: {
-    type: Date,
+    type: String,
     trim: true,
     required: true,
   },

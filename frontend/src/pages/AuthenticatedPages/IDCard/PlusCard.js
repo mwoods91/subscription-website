@@ -1,15 +1,32 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Grid, Card, CardMedia, Typography, Box } from '@mui/material';
 import Accordian from './Accordian';
-import { UserContext } from '../../../contexts/UserContext';
+import axios from 'axios';
 
 //3rd party
 import ReactCardFlip from 'react-card-flip';
+import BackOfPlusCard from './BackOfPlusCard';
 
 const PlusCard = () => {
-  const [state, setState] = useContext(UserContext);
+  const [userDetails, setUserDetails] = useState([]);
+  const [dateValue, setDateValue] = useState({});
 
-  console.log('The logged in user is', state.user.fullname);
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get('/profile');
+        const dateValue = response.data.dob;
+        const dateObj = new Date(dateValue);
+        const dateString = dateObj.toLocaleDateString('en-GB');
+        setDateValue(dateString);
+        setUserDetails(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, []);
+
   const IDFront = require('../../../assets/images/PlusIDCard/PlusFront.png');
   const IDBack = require('../../../assets/images/IDCard/Back-id-card.png');
   const [isFlipped, setisFlipped] = useState(false);
@@ -32,13 +49,19 @@ const PlusCard = () => {
           </Box>
           <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
             <Card sx={{ borderRadius: 2 }} onClick={handleFlipChange}>
-              <CardMedia component="img" alt="Front of ID Card" width={1} image={IDFront} />
-              <Box sx={{ position: 'absolute', mt: { xs: -7, md: -10 }, ml: { xs: 2, md: 3.4 } }}>
-                <Typography variant="h5">{state.user.fullname}</Typography>
-              </Box>
+              <CardMedia component="img" alt="Front of ID Card" width={1} image={IDFront} />{' '}
+              {userDetails &&
+                userDetails.map((item, index) => {
+                  return (
+                    <Box key={index} sx={{ position: 'absolute', mt: { xs: -7, md: -11 }, ml: { xs: 2, md: 3.7 } }}>
+                      <Typography variant="h4">{item.patient_record.fullname}</Typography>
+                    </Box>
+                  );
+                })}
             </Card>
             <Card sx={{ borderRadius: 2 }} onClick={handleFlipChange}>
               <CardMedia component="img" alt="Back of ID Card" width={1} image={IDBack} />
+              <BackOfPlusCard userDetails={userDetails} />
             </Card>
           </ReactCardFlip>
         </Grid>

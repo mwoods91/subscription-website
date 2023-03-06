@@ -1,15 +1,16 @@
 const User = require("../models/user");
+const Record = require("../models/record");
 const { sendError } = require("../utils/helper");
 
-exports.getProfile = async (req, res) => {
+exports.getRecords = async (req, res) => {
   try {
-    const profile = await User.findOne({ user: req.user._id });
+    const records = await Record.find().populate("patient_record");
 
-    if (!profile) {
-      if (!profile) return sendError(res, "User Not Found!");
+    if (!records) {
+      if (!records) return sendError(res, "User Not Found!");
     }
 
-    res.json(profile);
+    res.json(records);
   } catch (err) {
     console.log(err);
   }

@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const Record = require("../models/record");
 const EmailVerificationToken = require("../models/emailVerificationToken");
 const { sendError } = require("../utils/helper");
 const jwt = require("jsonwebtoken");
@@ -37,6 +38,10 @@ exports.register = async (req, res) => {
         stripe_customer_id: customer.id,
       }).save();
 
+      const record = await new Record({
+        patient_record: user._id,
+      }).save();
+
       // create signed token
       const confirmtoken = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
         expiresIn: "1d",
@@ -44,6 +49,7 @@ exports.register = async (req, res) => {
       //   console.log(user);
       const { password, ...rest } = user._doc;
       return res.json({
+        record: rest,
         confirmtoken,
         user: rest,
       });

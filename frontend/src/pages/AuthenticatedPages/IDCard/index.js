@@ -12,7 +12,6 @@ const IDCard = () => {
     const getSubscriptions = async () => {
       const { data } = await axios.get('/subscriptions');
       setSubscriptions(data.data);
-      console.log(data);
     };
 
     if (state && state.confirmtoken) getSubscriptions();
