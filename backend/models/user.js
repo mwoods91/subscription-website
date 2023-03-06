@@ -7,12 +7,44 @@ const userSchema = new Schema({
     trim: true,
     required: true,
   },
+  prefix: {
+    type: String,
+    trim: true,
+    required: true,
+  },
   fullname: {
     type: String,
     trim: true,
     required: true,
   },
-
+  address1: {
+    type: String,
+    trim: true,
+  },
+  address2: {
+    type: String,
+    trim: true,
+  },
+  county: {
+    type: String,
+    trim: true,
+  },
+  eircode: {
+    type: String,
+    trim: true,
+  },
+  gender: {
+    type: String,
+    trim: true,
+  },
+  diagnosis: {
+    type: String,
+    trim: true,
+  },
+  indication: {
+    type: String,
+    trim: true,
+  },
   dob: {
     type: Date,
     trim: true,

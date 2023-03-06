@@ -21,11 +21,11 @@ const Form = () => {
     validateOnBlur: false,
     validateOnChange: false,
     initialValues: {
-      client_reference_id: '237875695',
-      dob: '1991-01-15',
-      fullname: 'Mark Woods',
-      email: 'markwoods9@hotmail.com',
-      phone: '0877767940'
+      client_reference_id: '',
+      dob: '',
+      fullname: '',
+      email: '',
+      phone: ''
       // password: ''
     },
     validate: (values) => {
@@ -98,7 +98,7 @@ const Form = () => {
               helperText={formik.errors.client_reference_id}
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <MuiTextField
               label="DOB"
               id="dob"

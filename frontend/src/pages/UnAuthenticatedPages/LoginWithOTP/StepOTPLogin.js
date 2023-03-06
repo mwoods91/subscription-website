@@ -15,7 +15,6 @@ const StepOTPLogin = (props) => {
       const { data } = await axios.post('/verify-email', {
         email: `${value.email}`,
         otp: `${value.otp}`
-
         // password: values.password
       });
       console.log(data);

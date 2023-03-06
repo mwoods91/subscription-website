@@ -10,6 +10,12 @@ export const Prefix = [
   { id: '5', title: 'Prof' }
 ];
 
+export const Gender = [
+  { id: '1', title: 'Male' },
+  { id: '2', title: 'Female' },
+  { id: '3', title: 'Prefer not to say' }
+];
+
 export const Fixation = [
   { id: '1', name: 'Screw In' },
   { id: '1', name: 'Tined' },

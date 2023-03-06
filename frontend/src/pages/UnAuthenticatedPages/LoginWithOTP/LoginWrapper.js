@@ -20,7 +20,7 @@ const LoginWrapper = () => {
   const theme = useTheme();
 
   const [state, setState] = useState({
-    email: 'markwoods9@hotmail.com',
+    email: '',
     otp: ''
   });
 
