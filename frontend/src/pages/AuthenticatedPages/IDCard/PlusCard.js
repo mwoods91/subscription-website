@@ -37,8 +37,8 @@ const PlusCard = () => {
   return (
     <>
       <Grid spacing={2} container sx={{ textAlign: 'center', mt: { xs: 4, md: 3 } }}>
-        <Grid item xs={12} md={3} order={{ xs: 2, sm: 2 }}></Grid>
-        <Grid item xs={12} md={6} order={{ xs: 1, sm: 2 }}>
+        <Grid item xs={12} md={2.5} order={{ xs: 2, sm: 2 }}></Grid>
+        <Grid item xs={12} md={7} order={{ xs: 1, sm: 2 }}>
           <Box sx={{ mt: -3, mb: 0.8 }}>
             {' '}
             {isFlipped ? (
@@ -53,21 +53,21 @@ const PlusCard = () => {
               {userDetails &&
                 userDetails.map((item, index) => {
                   return (
-                    <Box key={index} sx={{ position: 'absolute', mt: { xs: -7, md: -11 }, ml: { xs: 2, md: 3.7 } }}>
-                      <Typography sx={{ fontWeight: 300, fontSize: { xs: '1rem', sm: '0.8rem', md: '1.5rem' } }}>
+                    <Box key={index} sx={{ position: 'absolute', mt: { xs: -7, md: -11 }, ml: { xs: 2, md: 3.9 } }}>
+                      <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.75rem', sm: '0.8rem', md: '1.5rem' } }}>
                         {item.patient_record.fullname}
                       </Typography>
                     </Box>
                   );
                 })}
             </Card>
-            <Card sx={{ borderRadius: 2 }} onClick={handleFlipChange}>
-              <CardMedia component="img" alt="Back of ID Card" width={1} image={IDBack} />
+            <Card sx={{ borderRadius: 2, width: '100%' }} onClick={handleFlipChange}>
+              {/* <CardMedia component="img" alt="Back of ID Card" width={1} image={IDBack} /> */}
               <BackOfPlusCard userDetails={userDetails} />
             </Card>
           </ReactCardFlip>
         </Grid>
-        <Grid sx={{ textAlign: 'right' }} item xs={12} md={3} order={{ xs: 3, sm: 2 }}></Grid>
+        <Grid sx={{ textAlign: 'right' }} item xs={12} md={2.5} order={{ xs: 3, sm: 2 }}></Grid>
       </Grid>
       <Grid spacing={4} container sx={{ textAlign: 'center', mt: 2 }}>
         <Grid item xs={12} md={12}>

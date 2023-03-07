@@ -1,10 +1,263 @@
-import React from 'react';
-import { Typography, Box } from '@mui/material';
+import React, { useRef, useEffect } from 'react';
+import { Typography, Box, Grid, Stack } from '@mui/material';
+import Barcode from 'react-barcode';
 
 const BackOfPlusCard = (props) => {
+  console.log(props);
+
   return (
     <>
-      {props.userDetails &&
+      <Grid container sx={{ p: 0.2, ml: 0.5 }}>
+        <Grid item xs={6} md={6}>
+          <Stack spacing={0.5} direction="row">
+            <Typography sx={{ fontWeight: 600, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '15px' } }} variant="h5">
+              Name:
+            </Typography>
+            <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '15px' } }} variant="h5">
+              Mark Woods
+            </Typography>
+          </Stack>
+          <Stack spacing={0.5} direction="row">
+            <Typography sx={{ fontWeight: 600, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '15px' } }} variant="h5">
+              DOB:
+            </Typography>
+            <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '15px' } }} variant="h5">
+              15/01/1991
+            </Typography>
+          </Stack>
+          <Stack direction="row">
+            <Typography sx={{ fontWeight: 600, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '15px' } }} variant="h5">
+              Implant Center:
+            </Typography>
+          </Stack>
+          <Stack sx={{ mt: -0.4 }} direction="row">
+            <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '15px' } }} variant="h5">
+              Beaumont Hospital Dublin
+            </Typography>
+          </Stack>
+        </Grid>
+        <Grid item xs={3} md={3}>
+          <Stack
+            spacing={0.5}
+            direction="row"
+            sx={{
+              ml: { xs: -4.5, md: 0 },
+              justifyContent: 'center',
+              textAlign: 'center',
+              mt: { xs: 2.5, md: 3.5 },
+              backgroundColor: '#000000',
+              width: { xs: '90%', md: '70%' }
+            }}
+          >
+            <Typography
+              color="white"
+              sx={{ left: '-50%', display: 'flex', ml: 0.5, fontWeight: 500, fontSize: { xs: '0.75rem', sm: '0.8rem', md: '16px' } }}
+              variant="h5"
+            >
+              Pacemaker
+            </Typography>
+          </Stack>
+        </Grid>
+        <Grid item xs={3} md={3}>
+          <Stack sx={{ ml: { xs: -5, md: 4.5 }, objectFit: 'contain' }} spacing={0.5} direction="column">
+            <Barcode width={1} height={40} textAlign="center" value="237856955" fontSize={10} />
+          </Stack>
+        </Grid>
+      </Grid>
+      <Grid container sx={{ p: 0.2, ml: 0.5 }}>
+        <Grid sx={{ mt: 0.3 }} item xs={7}>
+          <Stack spacing={0.5} direction="row">
+            <Typography sx={{ fontWeight: 600, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '15px' } }} variant="h5">
+              Physician:
+            </Typography>
+            <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '15px' } }} variant="h5">
+              Dr Joseph Galvin
+            </Typography>
+          </Stack>
+        </Grid>
+        <Grid sx={{ mt: 0.3 }} item xs={5}>
+          <Stack spacing={0.5} direction="row">
+            <Typography sx={{ fontWeight: 600, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '15px' } }} variant="h5">
+              Phone:
+            </Typography>
+            <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '15px' } }} variant="h5">
+              01 685565
+            </Typography>
+          </Stack>
+          <Stack spacing={0.5} direction="row">
+            <Typography sx={{ fontWeight: 600, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '15px' } }} variant="h5">
+              Implant Date:
+            </Typography>
+            <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '15px' } }} variant="h5">
+              15/01/1991
+            </Typography>
+          </Stack>
+        </Grid>
+      </Grid>
+      <Grid container sx={{ p: 0.2, ml: 0.5 }}>
+        <Grid item xs={12}>
+          <Stack spacing={0.5} direction="row">
+            <Typography sx={{ fontWeight: 600, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '15px' } }} variant="h5">
+              Diagnosis:
+            </Typography>
+            <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '15px' } }} variant="h5">
+              AV Block
+            </Typography>
+          </Stack>
+          <Stack spacing={0.5} direction="row">
+            <Typography sx={{ fontWeight: 600, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '15px' } }} variant="h5">
+              Indication:
+            </Typography>
+            <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '15px' } }} variant="h5">
+              History of A-Fib
+            </Typography>
+          </Stack>
+        </Grid>
+      </Grid>
+      <Grid container sx={{ p: 0.2, ml: 0.5 }}>
+        <Grid item xs={7} md={7.5}>
+          <Stack spacing={0.5} sx={{ mt: 0.2, backgroundColor: '#000000', width: { xs: '90%', md: '75%' } }} direction="row">
+            <Typography color="white" sx={{ fontWeight: 600, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '15px' } }} variant="h5">
+              Manufacturer:
+            </Typography>
+            <Typography color="white" sx={{ fontWeight: 300, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '15px' } }} variant="h5">
+              Boston Scientific
+            </Typography>
+          </Stack>
+          <Stack spacing={0.5} direction="row">
+            <Typography sx={{ fontWeight: 600, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '15px' } }} variant="h5">
+              Model Name:
+            </Typography>
+            <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '15px' } }} variant="h5">
+              ADVISA DR MRI
+            </Typography>
+          </Stack>
+        </Grid>
+        <Grid item xs={5} md={4.5}>
+          <Stack sx={{ mt: 0.2 }} spacing={0.5} direction="row">
+            <Typography sx={{ fontWeight: 600, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '15px' } }} variant="h5">
+              Model
+            </Typography>
+            <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '15px' } }} variant="h5">
+              WSDR01
+            </Typography>
+          </Stack>
+          <Stack spacing={0.5} direction="row">
+            <Typography sx={{ fontWeight: 600, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '15px' } }} variant="h5">
+              Name:
+            </Typography>
+            <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '15px' } }} variant="h5">
+              RXU2356565
+            </Typography>
+          </Stack>
+        </Grid>
+      </Grid>
+      <Grid sx={{ mt: 0.1 }} container>
+        <Grid item xs={1} sm={1} md={1} lg={1}></Grid>
+        <Grid item xs={3.5} sm={2.75} md={2.75} lg={2.75}>
+          <Typography sx={{ fontWeight: 600, fontSize: { xs: '0.75rem', sm: '0.8rem', md: '16px' } }} variant="h5">
+            Manufacturer
+          </Typography>
+        </Grid>
+        <Grid item xs={2.75} sm={2.75} md={2.75} lg={2.75}>
+          <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.75rem', sm: '0.8rem', md: '16px' } }} variant="h5">
+            Model
+          </Typography>
+        </Grid>
+        <Grid item xs={1.8} sm={2.75} md={2.75} lg={2.75}>
+          <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.75rem', sm: '0.8rem', md: '16px' } }} variant="h5">
+            Length(CM)
+          </Typography>
+        </Grid>
+        <Grid item xs={2.95} sm={2.75} md={2.75} lg={2.75}>
+          <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.75rem', sm: '0.8rem', md: '16px' } }} variant="h5">
+            Serial
+          </Typography>
+        </Grid>
+      </Grid>
+      <Grid container>
+        <Grid sx={{ mt: -0.3 }} item xs={1} sm={1} md={1} lg={1}>
+          <Typography sx={{ fontWeight: 600, fontSize: { xs: '0.75rem', sm: '0.8rem', md: '16px' } }} variant="h5">
+            RA:
+          </Typography>
+        </Grid>
+        <Grid sx={{ mt: -0.3 }} item xs={3.5} sm={2.75} md={2.75} lg={2.75}>
+          <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '14.5px' } }} variant="h5">
+            Boston Scientific
+          </Typography>
+        </Grid>
+        <Grid sx={{ mt: -0.3 }} item xs={2.75} sm={2.75} md={2.75} lg={2.75}>
+          <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '14.5px' } }} variant="h5">
+            4569M
+          </Typography>
+        </Grid>
+        <Grid sx={{ mt: -0.3 }} item xs={1.8} sm={2.75} md={2.75} lg={2.75}>
+          <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '14.5px' } }} variant="h5">
+            93
+          </Typography>
+        </Grid>
+        <Grid sx={{ mt: -0.3 }} item xs={2.95} sm={2.75} md={2.75} lg={2.75}>
+          <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '14.5px' } }} variant="h5">
+            PXS265355
+          </Typography>
+        </Grid>
+      </Grid>
+      <Grid container>
+        <Grid sx={{ mt: -0.3 }} item xs={1} sm={1} md={1} lg={1}>
+          <Typography sx={{ fontWeight: 600, fontSize: { xs: '0.75rem', sm: '0.8rem', md: '16px' } }} variant="h5">
+            RV:
+          </Typography>
+        </Grid>
+        <Grid sx={{ mt: -0.3 }} item xs={3.5} sm={2.75} md={2.75} lg={2.75}>
+          <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '14.5px' } }} variant="h5">
+            Boston Scientific
+          </Typography>
+        </Grid>
+        <Grid sx={{ mt: -0.3 }} item xs={2.75} sm={2.75} md={2.75} lg={2.75}>
+          <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '14.5px' } }} variant="h5">
+            4569M
+          </Typography>
+        </Grid>
+        <Grid sx={{ mt: -0.3 }} item xs={1.8} sm={2.75} md={2.75} lg={2.75}>
+          <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '14.5px' } }} variant="h5">
+            93
+          </Typography>
+        </Grid>
+        <Grid sx={{ mt: -0.3 }} item xs={2.95} sm={2.75} md={2.75} lg={2.75}>
+          <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '14.5px' } }} variant="h5">
+            PXS265355
+          </Typography>
+        </Grid>
+      </Grid>
+      <Grid sx={{ mb: 1 }} container>
+        <Grid sx={{ mt: -0.3 }} item xs={1} sm={1} md={1} lg={1}>
+          <Typography sx={{ fontWeight: 600, fontSize: { xs: '0.75rem', sm: '0.8rem', md: '16px' } }} variant="h5">
+            LV:
+          </Typography>
+        </Grid>
+        <Grid sx={{ mt: -0.3 }} item xs={3.5} sm={2.75} md={2.75} lg={2.75}>
+          <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '14.5px' } }} variant="h5">
+            Boston Scientific
+          </Typography>
+        </Grid>
+        <Grid sx={{ mt: -0.3 }} item xs={2.75} sm={2.75} md={2.75} lg={2.75}>
+          <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '14.5px' } }} variant="h5">
+            4569M
+          </Typography>
+        </Grid>
+        <Grid sx={{ mt: -0.3 }} item xs={1.8} sm={2.75} md={2.75} lg={2.75}>
+          <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '14.5px' } }} variant="h5">
+            93
+          </Typography>
+        </Grid>
+        <Grid sx={{ mt: -0.3 }} item xs={2.95} sm={2.75} md={2.75} lg={2.75}>
+          <Typography sx={{ fontWeight: 300, fontSize: { xs: '0.70rem', sm: '0.8rem', md: '14.5px' } }} variant="h5">
+            PXS265355
+          </Typography>
+        </Grid>
+      </Grid>
+
+      {/* {props.userDetails &&
         props.userDetails.map((item, index) => {
           return (
             <>
@@ -142,7 +395,7 @@ const BackOfPlusCard = (props) => {
               </Box>
             </>
           );
-        })}
+        })} */}
     </>
   );
 };
