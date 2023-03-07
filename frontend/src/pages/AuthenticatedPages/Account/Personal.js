@@ -23,7 +23,6 @@ const Personal = () => {
         // const dateString = dateObj.toLocaleDateString('en-GB');
         // setDateValue(dateString);
         setFormValues(response.data);
-        console.log(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -81,7 +80,7 @@ const Personal = () => {
               label="HRI ID"
               id="client_reference_id"
               type="text"
-              value={formik.values.client_reference_id}
+              value={formik.values.client_reference_id || ''}
               name="client_reference_id"
               onChange={formik.handleChange}
             />
@@ -97,12 +96,14 @@ const Personal = () => {
               InputLabelProps={{ shrink: true }}
               variant="outlined"
               name="prefix"
-              value={formik.values.prefix}
+              value={formik.values.prefix || ''}
               label="Prefix"
               onChange={formik.handleChange}
             >
-              {Prefix.map((option, index) => (
-                <MenuItem key={option}>{option}</MenuItem>
+              {Prefix.map((item) => (
+                <MenuItem key={item.id} value={item.title}>
+                  {item.title}
+                </MenuItem>
               ))}
             </TextField>
           </Grid>
@@ -112,7 +113,7 @@ const Personal = () => {
               id="fullname"
               name="fullname"
               type="text"
-              value={formik.values.fullname}
+              value={formik.values.fullname || ''}
               onChange={formik.handleChange}
               error={Boolean(formik.errors.fullname)}
               helperText={formik.errors.fullname}
@@ -126,7 +127,7 @@ const Personal = () => {
               id="address1"
               type="text"
               name="address1"
-              value={formik.values.address1}
+              value={formik.values.address1 || ''}
               onChange={formik.handleChange}
               error={Boolean(formik.errors.address1)}
               helperText={formik.errors.address1}
@@ -138,7 +139,7 @@ const Personal = () => {
               id="address2"
               type="text"
               name="address2"
-              value={formik.values.address2}
+              value={formik.values.address2 || ''}
               onChange={formik.handleChange}
             />
           </Grid>
@@ -150,7 +151,7 @@ const Personal = () => {
               InputLabelProps={{ shrink: true }}
               variant="outlined"
               name="county"
-              value={formik.values.county}
+              value={formik.values.county || ''}
               label="County"
               onChange={formik.handleChange}
               error={Boolean(formik.errors.county)}
@@ -169,13 +170,13 @@ const Personal = () => {
               id="eircode"
               type="text"
               name="eircode"
-              value={formik.values.eircode}
+              value={formik.values.eircode || ''}
               onChange={formik.handleChange}
               error={Boolean(formik.errors.eircode)}
               helperText={formik.errors.eircode}
             />
           </Grid>
-          {/* <Grid sx={{ mt: 1 }} item xs={12} md={6}>
+          <Grid sx={{ mt: 1 }} item xs={12} md={6}>
             <TextField
               select
               sx={{ '& .MuiInputBase-root': { height: 29, Width: 100 } }}
@@ -184,7 +185,7 @@ const Personal = () => {
               variant="outlined"
               name="gender"
               id="gender"
-              value={formik.values.gender}
+              value={formik.values.gender || ''}
               label="Gender"
               onChange={formik.handleChange}
               error={Boolean(formik.errors.gender)}
@@ -196,30 +197,30 @@ const Personal = () => {
                 </MenuItem>
               ))}
             </TextField>
-          </Grid> */}
+          </Grid>
           <Grid sx={{ mt: 1 }} item xs={12} md={6}>
-            {/* <MuiTextField
+            <MuiTextField
               label="DOB"
               id="dob"
               type="text"
               name="dob"
-              value={formik.values.dob}
+              value={formik.values.dob || ''}
               onChange={formik.handleChange}
               error={Boolean(formik.errors.dob)}
               helperText={formik.errors.dob}
-            /> */}
+            />
           </Grid>
           <Grid sx={{ mt: 1 }} item xs={12} md={6}>
-            {/* <MuiTextField
+            <MuiTextField
               label="Email address"
               id="email"
               type="text"
               name="email"
-              value={formik.values.email}
+              value={formik.values.email || ''}
               onChange={formik.handleChange}
               error={Boolean(formik.errors.email)}
               helperText={formik.errors.email}
-            /> */}
+            />
           </Grid>
           <Grid sx={{ mt: 1 }} item xs={12} md={6}>
             <MuiTextField
@@ -227,7 +228,7 @@ const Personal = () => {
               id="phone"
               type="text"
               name="phone"
-              value={formik.values.phone}
+              value={formik.values.phone || ''}
               onChange={formik.handleChange}
               error={Boolean(formik.errors.phone)}
               helperText={formik.errors.phone}
@@ -240,10 +241,17 @@ const Personal = () => {
             <Typography variant="h6">Other medical information (if applicable)</Typography>
           </Grid>
           <Grid sx={{ mt: 1 }} item xs={12} md={12}>
-            <MuiTextField readonly label="Diagnosis" id="diagnosis" type="text" name="diagnosis" value={formik.values.diagnosis} />
+            <MuiTextField disabled label="Diagnosis" id="diagnosis" type="text" name="diagnosis" value={formik.values.diagnosis || ''} />
           </Grid>
           <Grid sx={{ mt: 1 }} item xs={12} md={12}>
-            <MuiTextField readonly label="Indication" id="indication" type="text" name="indication" value={formik.values.indication} />
+            <MuiTextField
+              disabled
+              label="Indication"
+              id="indication"
+              type="text"
+              name="indication"
+              value={formik.values.indication || ''}
+            />
           </Grid>
         </Grid>
         <Grid sx={{ mt: 1 }} container spacing={1}>

@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const { readdirSync } = require("fs");
+path = require("path");
 
 const morgan = require("morgan");
 require("./database/index");
@@ -11,6 +12,11 @@ const app = express();
 
 // middlewares
 app.use(express.json());
+
+let reqPath = path.join(__dirname, "../frontend/build");
+
+app.use(express.static(reqPath));
+console.log({ file: reqPath });
 
 app.use(
   cors({

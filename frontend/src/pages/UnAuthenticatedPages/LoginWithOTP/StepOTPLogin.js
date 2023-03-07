@@ -4,11 +4,21 @@ import { Box, Container, Grid, Typography, Button } from '@mui/material';
 import axios from 'axios';
 import { UserContext } from '../../../contexts/UserContext';
 import { useNavigate } from 'react-router-dom';
+import SnackbarMessage from '../../../components/Snackbar';
 
 const StepOTPLogin = (props) => {
   const [state, setState] = useContext(UserContext);
   const { value, handleChange } = props;
   const navigate = useNavigate();
+  const [snackbar, setSnackBar] = useState({
+    open: false,
+    close: true,
+    actionButton: false,
+    alert: { color: 'primary', variant: 'filled' },
+    message: '',
+    vertical: 'top',
+    horizontal: 'center'
+  });
 
   const confirmOtp = async () => {
     try {
@@ -17,13 +27,27 @@ const StepOTPLogin = (props) => {
         otp: `${value.otp}`
         // password: values.password
       });
-      console.log(data);
-
       setState(data);
       localStorage.setItem('auth', JSON.stringify(data));
+      setSnackBar({
+        open: true,
+        message: 'You have been logged inb successfully',
+        variant: 'alert',
+        alert: {
+          color: 'success'
+        }
+      });
       navigate('/my-id-card');
     } catch (err) {
-      console.log(err);
+      setSnackBar({
+        open: true,
+        message: err,
+        variant: 'alert',
+        alert: {
+          color: 'error'
+        },
+        close: false
+      });
     }
   };
   return (
@@ -72,6 +96,7 @@ const StepOTPLogin = (props) => {
           </Box>
         </Box>
       </Container>
+      <SnackbarMessage snackbar={snackbar} setSnackBar={setSnackBar} />
     </Box>
   );
 };

@@ -14,7 +14,7 @@ const PlusCard = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get('/profile');
+        const response = await axios.get('/records');
         const dateValue = response.data.dob;
         const dateObj = new Date(dateValue);
         const dateString = dateObj.toLocaleDateString('en-GB');
@@ -54,7 +54,9 @@ const PlusCard = () => {
                 userDetails.map((item, index) => {
                   return (
                     <Box key={index} sx={{ position: 'absolute', mt: { xs: -7, md: -11 }, ml: { xs: 2, md: 3.7 } }}>
-                      <Typography variant="h4">{item.patient_record.fullname}</Typography>
+                      <Typography sx={{ fontWeight: 300, fontSize: { xs: '1rem', sm: '0.8rem', md: '1.5rem' } }}>
+                        {item.patient_record.fullname}
+                      </Typography>
                     </Box>
                   );
                 })}

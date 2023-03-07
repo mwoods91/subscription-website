@@ -10,11 +10,6 @@ const pages = [
     title: 'Personal'
   },
   {
-    id: 'security',
-    href: '/my-account/password-reset',
-    title: 'Password-Reset'
-  },
-  {
     id: 'preferences',
     href: '/my-account/preferences',
     title: 'Preferences'

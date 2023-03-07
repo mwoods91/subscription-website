@@ -17,7 +17,7 @@ import Loadable from '../components/Loadable';
 // const HelpCenter = Loadable(lazy(() => import('../pages/UnAuthenticatedPages/HelpCenter')));
 
 const Login = Loadable(lazy(() => import('../pages/UnAuthenticatedPages/LoginWithOTP')));
-const OTPGenerator = Loadable(lazy(() => import('../pages/UnAuthenticatedPages/Login/OTP')));
+// const OTPGenerator = Loadable(lazy(() => import('../pages/UnAuthenticatedPages/Login/OTP')));
 // const RegisterNew = Loadable(lazy(() => import('../pages/UnAuthenticatedPages/Register/NewRegister')));
 const RegisterExisting = Loadable(lazy(() => import('../pages/UnAuthenticatedPages/Register/ExistingRegister')));
 // const RegisterChoices = Loadable(lazy(() => import('../pages/UnAuthenticatedPages/RegisterChoices')));
@@ -62,10 +62,6 @@ export default function ThemeRoutes() {
         {
           path: '/login',
           element: <Login />
-        },
-        {
-          path: '/OTP-verification',
-          element: <OTPGenerator />
         },
 
         // {

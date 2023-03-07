@@ -15,3 +15,15 @@ exports.getRecords = async (req, res) => {
     console.log(err);
   }
 };
+
+exports.getUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+    if (!user) {
+      if (!user) return sendError(res, "User Not Found!");
+    }
+    res.json(user);
+  } catch (err) {
+    console.log(err);
+  }
+};

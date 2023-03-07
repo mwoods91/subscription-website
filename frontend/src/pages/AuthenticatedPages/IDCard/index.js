@@ -3,6 +3,7 @@ import axios from 'axios';
 import PlusCard from './PlusCard';
 import Pricing from './LoggedInPricing';
 import { UserContext } from '../../../contexts/UserContext';
+import Loader from '../../../components/Loader';
 
 const IDCard = () => {
   const [state, setState] = useContext(UserContext);

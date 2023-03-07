@@ -3,8 +3,9 @@ const { requireSignin } = require("../middlewares");
 
 const router = express.Router();
 
-const { getRecords } = require("../controllers/user");
+const { getRecords, getUser } = require("../controllers/records");
 
-router.get("/profile", requireSignin, getRecords);
+router.get("/records", requireSignin, getRecords);
+router.get("/profile", requireSignin, getUser);
 
 module.exports = router;
