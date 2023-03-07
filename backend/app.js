@@ -21,7 +21,7 @@ console.log({ file: reqPath });
 app.use(
   cors({
     origin: "*",
-    methods: ["GET", "POST", "OPTIONS"],
+    methods: ["GET", "POST", "OPTIONS", "PUT"],
     allowedHeaders: ["*"],
     credentials: false,
   })

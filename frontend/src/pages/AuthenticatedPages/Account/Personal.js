@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import * as React from 'react';
 import Page from './components/Page';
 import { Typography, Divider, Grid, MenuItem, TextField } from '@mui/material';
 import MuiTextField from '../../../components/TextField';
 import MuiButton from '../../../components/Button';
 import { Prefix, County, Gender } from '../../../data';
 import axios from 'axios';
-import { Formik, Form, Field } from 'formik';
-import * as Yup from 'yup';
+import { toast } from 'react-hot-toast';
+
+import 'react-toastify/dist/ReactToastify.css';
+
 // third party
 import { useFormik } from 'formik';
 
@@ -34,7 +37,18 @@ const Personal = () => {
     enableReinitialize: true,
     validateOnBlur: false,
     validateOnChange: false,
-    initialValues: formValues,
+    initialValues: formValues || {
+      prefix: '',
+      fullname: '',
+      address1: '',
+      address2: '',
+      county: '',
+      eircode: '',
+      dob: '',
+      gender: '',
+      email: '',
+      phone: ''
+    },
 
     validate: (values) => {
       let errors = {};
@@ -61,9 +75,31 @@ const Personal = () => {
       }
       return errors;
     },
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-      console.log(values);
+    onSubmit: async (values) => {
+      try {
+        const response = await axios.put('/update-user', {
+          prefix: values.prefix,
+          fullname: values.fullname,
+          address1: values.address1,
+          address2: values.address2 || '',
+          county: values.county,
+          eircode: values.eircode,
+          dob: values.dob,
+          email: values.email,
+          phone: values.phone,
+          gender: values.gender
+        });
+        localStorage.setItem('auth', JSON.stringify(response.values));
+        toast.success('You have successfully updated your details', {
+          duration: 4000,
+          position: 'top-center'
+        });
+      } catch (error) {
+        toast.error('Something went wrong updating your details', {
+          duration: 4000,
+          position: 'top-center'
+        });
+      }
     }
   });
 

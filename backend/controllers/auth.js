@@ -20,7 +20,11 @@ exports.register = async (req, res) => {
     }
 
     const exist = await User.findOne({ email });
-    if (exist) return sendError(res, "Email is taken");
+    if (exist)
+      return sendError(
+        res,
+        "It Looks like this account already exists! please login"
+      );
 
     // create account in stripe
     const customer = await stripe.customers.create({
@@ -65,7 +69,11 @@ exports.sendOTP = async (req, res) => {
   const { email } = req.body;
 
   const user = await User.findOne({ email });
-  if (!user) return sendError(res, "Email Not Found!");
+  if (!user)
+    return sendError(
+      res,
+      "Are you sure you entered the correct email associated with this account?"
+    );
 
   // Generate a random 6-digit OTP code
   const otpCode = Math.floor(100000 + Math.random() * 900000);
@@ -152,8 +160,41 @@ exports.verifyEmail = async (req, res) => {
   });
 };
 
-exports.test = async (req, res) => {
-  const { client_reference_id } = req.body;
-  console.log(client_reference_id);
-  res.json({ message: "Data received" });
+exports.updateUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+    if (!user) {
+      if (!user) return sendError(res, "User Not Found!");
+    }
+
+    user.prefix = req.body.prefix || user.prefix;
+    user.fullname = req.body.fullname || user.fullname;
+    user.address1 = req.body.address1 || user.address1;
+    user.address2 = req.body.address2 || user.address2;
+    user.county = req.body.county || user.county;
+    user.eircode = req.body.eircode || user.eircode;
+    user.gender = req.body.gender || user.gender;
+    user.dob = req.body.dob || user.dob;
+    user.phone = req.body.phone || user.phone;
+    user.email = req.body.email || user.email;
+
+    const updatedUser = await user.save();
+
+    console.log(updatedUser);
+    res.json({
+      _id: updatedUser._id,
+      prefix: updatedUser.prefix,
+      fullname: updatedUser.fullname,
+      address1: updatedUser.address1,
+      address2: updatedUser.address2,
+      county: updatedUser.county,
+      eircode: updatedUser.eircode,
+      gender: updatedUser.gender,
+      dob: updatedUser.dob,
+      phone: updatedUser.phone,
+      email: updatedUser.email,
+    });
+  } catch (err) {
+    console.log(err);
+  }
 };

@@ -1,14 +1,13 @@
 /* eslint-disable react/no-unescaped-entities */
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { useFormik } from 'formik';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
-import { Box, Grid, InputAdornment, Typography, Button } from '@mui/material/';
+import { Box, Grid, Typography, Button } from '@mui/material/';
 import { UserContext } from '../../../../contexts/UserContext';
-import DatePicker from 'react-mobile-datepicker';
+// import DatePicker from 'react-mobile-datepicker';
 //3rd party
-import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 
 //project imports
 import MuiTextField from '../../../../components/TextField';
@@ -58,14 +57,20 @@ const Form = () => {
         if (values.error) {
           toast.error(values.error);
         } else {
-          toast.success(`You have successsfully registered`);
+          toast.error('Congratulations, Your account is set up', {
+            duration: 6000,
+            position: 'top-center'
+          });
           setState(values);
           localStorage.setItem('auth', JSON.stringify(values));
           navigate('/login');
         }
       } catch (err) {
         console.log(err);
-        toast.error('Something went wrong. Try again');
+        toast.error(err.response.data.error, {
+          duration: 6000,
+          position: 'top-center'
+        });
       }
     }
   });

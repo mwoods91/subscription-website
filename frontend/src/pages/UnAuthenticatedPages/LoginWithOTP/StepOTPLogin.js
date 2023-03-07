@@ -5,6 +5,7 @@ import axios from 'axios';
 import { UserContext } from '../../../contexts/UserContext';
 import { useNavigate } from 'react-router-dom';
 import SnackbarMessage from '../../../components/Snackbar';
+import { toast } from 'react-hot-toast';
 
 const StepOTPLogin = (props) => {
   const [state, setState] = useContext(UserContext);
@@ -25,28 +26,18 @@ const StepOTPLogin = (props) => {
       const { data } = await axios.post('/verify-email', {
         email: `${value.email}`,
         otp: `${value.otp}`
-        // password: values.password
       });
       setState(data);
       localStorage.setItem('auth', JSON.stringify(data));
-      setSnackBar({
-        open: true,
-        message: 'You have been logged inb successfully',
-        variant: 'alert',
-        alert: {
-          color: 'success'
-        }
+      toast.success('Looks like we found your account. Welcome to your HRI Plus portal', {
+        duration: 4000,
+        position: 'top-center'
       });
       navigate('/my-id-card');
     } catch (err) {
-      setSnackBar({
-        open: true,
-        message: err,
-        variant: 'alert',
-        alert: {
-          color: 'error'
-        },
-        close: false
+      toast.success(err.response.data.error, {
+        duration: 4000,
+        position: 'top-center'
       });
     }
   };
@@ -69,7 +60,7 @@ const StepOTPLogin = (props) => {
               </Grid>
               <Grid sx={{ textAlign: 'center' }} container>
                 <Grid item xs={12}>
-                  <Typography variant="p">A verification code has been sent to your email</Typography>
+                  <Typography variant="p">A verification code has been sent to your mobile</Typography>
                 </Grid>
               </Grid>
               <Grid sx={{ mt: 2 }} container spacing={2}>

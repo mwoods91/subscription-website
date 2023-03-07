@@ -23,6 +23,7 @@ const userSchema = new Schema({
   address2: {
     type: String,
     trim: true,
+    required: false,
   },
   county: {
     type: String,

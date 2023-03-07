@@ -8,17 +8,29 @@ import axios from 'axios';
 import { Stack } from '@mui/material';
 import MuiTextField from '../../../components/TextField';
 import MuiButton from '../../../components/Button';
+import { toast } from 'react-hot-toast';
 
 const StepEmailLogin = (props) => {
   const { value, handleChange } = props;
 
   const Continue = async (e) => {
-    const { data } = await axios.post('/send-otp', {
-      email: `${value.email}`
-      // password: values.password
-    });
-    console.log(data);
-    props.nextStep();
+    try {
+      const { data } = await axios.post('/send-otp', {
+        email: `${value.email}`
+      });
+      toast.success('We have sent your OTP to your mobile', {
+        duration: 6000,
+        position: 'top-center'
+      });
+      console.log(data);
+      props.nextStep();
+    } catch (err) {
+      toast.error(err.response.data.error, {
+        duration: 6000,
+        position: 'top-center'
+      });
+      console.log(err);
+    }
   };
   return (
     <>
