@@ -26,19 +26,19 @@ const StepOTPLogin = (props) => {
       const { data } = await axios.post('/verify-email', {
         email: `${value.email}`,
         otp: `${value.otp}`
+        // password: values.password
       });
+      console.log(data);
+
       setState(data);
       localStorage.setItem('auth', JSON.stringify(data));
-      toast.success('Looks like we found your account. Welcome to your HRI Plus portal', {
-        duration: 4000,
-        position: 'top-center'
-      });
       navigate('/my-id-card');
-    } catch (err) {
-      toast.success(err.response.data.error, {
-        duration: 4000,
+      toast.success('Welcome to your HRI Plus portal', {
+        duration: 6000,
         position: 'top-center'
       });
+    } catch (err) {
+      console.log(err);
     }
   };
   return (

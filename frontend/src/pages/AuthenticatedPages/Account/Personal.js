@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import * as React from 'react';
 import Page from './components/Page';
 import { Typography, Divider, Grid, MenuItem, TextField } from '@mui/material';
@@ -6,6 +6,7 @@ import MuiTextField from '../../../components/TextField';
 import MuiButton from '../../../components/Button';
 import { Prefix, County, Gender } from '../../../data';
 import axios from 'axios';
+import { UserContext } from '../../../contexts/UserContext';
 import { toast } from 'react-hot-toast';
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,6 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useFormik } from 'formik';
 
 const Personal = () => {
+  const [state, setState] = useContext(UserContext);
   const [formValues, setFormValues] = useState({});
   // const [dateValue, setDateValue] = useState({});
 
@@ -89,7 +91,11 @@ const Personal = () => {
           phone: values.phone,
           gender: values.gender
         });
-        localStorage.setItem('auth', JSON.stringify(response.values));
+        window.location.reload();
+        const auth = JSON.parse(localStorage.getItem('auth'));
+        auth.user = response;
+        localStorage.setItem('auth', JSON.stringify(auth));
+        setState(auth);
         toast.success('You have successfully updated your details', {
           duration: 4000,
           position: 'top-center'

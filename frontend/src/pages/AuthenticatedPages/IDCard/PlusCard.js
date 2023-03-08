@@ -28,7 +28,7 @@ const PlusCard = () => {
   }, []);
 
   const IDFront = require('../../../assets/images/PlusIDCard/PlusFront.png');
-  const IDBack = require('../../../assets/images/IDCard/Back-id-card.png');
+  // const IDBack = require('../../../assets/images/IDCard/Back-id-card.png');
   const [isFlipped, setisFlipped] = useState(false);
 
   const handleFlipChange = () => {
@@ -37,8 +37,8 @@ const PlusCard = () => {
   return (
     <>
       <Grid spacing={2} container sx={{ textAlign: 'center', mt: { xs: 4, md: 3 } }}>
-        <Grid item xs={12} md={2.5} order={{ xs: 2, sm: 2 }}></Grid>
-        <Grid item xs={12} md={7} order={{ xs: 1, sm: 2 }}>
+        <Grid item xs={12} sm={2} md={2.5} order={{ xs: 2, sm: 2 }}></Grid>
+        <Grid item xs={12} sm={7.5} md={6.5} order={{ xs: 1, sm: 2 }}>
           <Box sx={{ mt: -3, mb: 0.8 }}>
             {' '}
             {isFlipped ? (
@@ -61,16 +61,16 @@ const PlusCard = () => {
                   );
                 })}
             </Card>
-            <Card sx={{ borderRadius: 2, width: '100%' }} onClick={handleFlipChange}>
+            <Card sx={{ borderRadius: 2, width: '100%', height: '100%' }} onClick={handleFlipChange}>
               {/* <CardMedia component="img" alt="Back of ID Card" width={1} image={IDBack} /> */}
               <BackOfPlusCard userDetails={userDetails} />
             </Card>
           </ReactCardFlip>
         </Grid>
-        <Grid sx={{ textAlign: 'right' }} item xs={12} md={2.5} order={{ xs: 3, sm: 2 }}></Grid>
+        <Grid sx={{ textAlign: 'right' }} item xs={12} sm={2} md={2.5} order={{ xs: 3, sm: 2 }}></Grid>
       </Grid>
-      <Grid spacing={4} container sx={{ textAlign: 'center', mt: 2 }}>
-        <Grid item xs={12} md={12}>
+      <Grid spacing={4} container sx={{ textAlign: 'center', mt: 4 }}>
+        <Grid item xs={12} sm={12} md={12}>
           <Accordian />
         </Grid>
       </Grid>

@@ -69,11 +69,7 @@ exports.sendOTP = async (req, res) => {
   const { email } = req.body;
 
   const user = await User.findOne({ email });
-  if (!user)
-    return sendError(
-      res,
-      "Are you sure you entered the correct email associated with this account?"
-    );
+  if (!user) return sendError(res, "Email Not Found!");
 
   // Generate a random 6-digit OTP code
   const otpCode = Math.floor(100000 + Math.random() * 900000);

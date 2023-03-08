@@ -14,24 +14,17 @@ const StepEmailLogin = (props) => {
   const { value, handleChange } = props;
 
   const Continue = async (e) => {
-    try {
-      const { data } = await axios.post('/send-otp', {
-        email: `${value.email}`
-      });
-      toast.success('We have sent your OTP to your mobile', {
-        duration: 6000,
-        position: 'top-center'
-      });
-      console.log(data);
-      props.nextStep();
-    } catch (err) {
-      toast.error(err.response.data.error, {
-        duration: 6000,
-        position: 'top-center'
-      });
-      console.log(err);
-    }
+    const { data } = await axios.post('/send-otp', {
+      email: `${value.email}`
+    });
+    console.log(data);
+    props.nextStep();
+    toast.success('We have sent your OTP to your mobile', {
+      duration: 6000,
+      position: 'top-center'
+    });
   };
+
   return (
     <>
       <Box marginBottom={4}>

@@ -162,7 +162,6 @@ const SubscriptionDetails = ({ children }) => {
           </Box>
         )}
       </>
-      ;
     </>
   );
 };
